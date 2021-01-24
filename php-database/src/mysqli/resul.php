@@ -6,7 +6,7 @@ $sql = "SELECT * FROM alunos";
 
 $resultado = $conexao->query($sql);
 
-while ($linha = $resultado->fetch_row()) {
+while ($linha = $resultado->fetch_object()) {
     var_dump($linha);
 }
 
