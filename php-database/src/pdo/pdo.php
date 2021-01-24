@@ -5,10 +5,9 @@ try {
 
     $resultado = $conexao->query('SELECT * FROM alunos');
 
-    $resultado->setFetchMode(PDO::FETCH_ASSOC);
-    foreach ($resultado as $aluno) {
-        var_dump($aluno);
-    }
+    $alunos = $resultado->fetchAll(PDO::FETCH_ASSOC);
+
+    var_dump($alunos);
 
 } catch (PDOException $PDOException) {
     echo $PDOException->getMessage();
