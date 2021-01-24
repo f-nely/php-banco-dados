@@ -9,10 +9,12 @@ try {
     foreach ($alunos as $aluno) {
         var_dump($aluno);
     }*/
-    
-    $resultado = $conexao->query("INSERT INTO alunos (id, nome) VALUES (4, 'Nikita Popov')");
 
-    var_dump($resultado);
+    $resultado = $conexao->query('SELECT * FROM alunos');
+
+    foreach ($resultado as $aluno) {
+        var_dump($aluno);
+    }
 
 } catch (PDOException $PDOException) {
     echo $PDOException->getMessage();
