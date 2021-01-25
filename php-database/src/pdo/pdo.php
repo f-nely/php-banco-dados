@@ -5,11 +5,17 @@ try {
 
     $resultado = $conexao->query('SELECT * FROM alunos');
 
-    $alunos = $resultado->fetchAll(PDO::FETCH_ASSOC);
+    if (!$resultado) {
+        $erro = $conexao->errorInfo();
 
+        throw new \PDOException($erro[2], $erro[1]);
+    }
+
+    $alunos = $resultado->fetchAll(PDO::FETCH_ASSOC);
     var_dump($alunos);
 
 } catch (PDOException $PDOException) {
-    echo $PDOException->getMessage();
+    echo "mensagem: " . $PDOException->getMessage();
+    echo "<br>código: " .$PDOException->getCode();
 }
 
